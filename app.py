@@ -471,3 +471,23 @@ aiPanel10.querySelector('h2').textContent='Katalógusfordítás';aiStatus10.text
 window.catalogScan13?.();
 })();
 </script>'''
+
+WEB_PAGE += r'''<style>
+:root{--surface:#182a30;--line:#36515a;--accent:#5eead4}
+body,.shell11{background:#0e1c22;color:#eef8f7}
+.brand11 strong{color:#5eead4}.brand11 small,p,small,.auth11{color:#b6cecf}
+section,article{background:var(--surface);border-color:var(--line)}
+input,select{background:#10242b;color:#eef8f7;border-color:#48636b}
+label{color:#d0e3e3}button{background:#087f76;color:#fff}
+button:focus-visible,input:focus-visible,select:focus-visible{outline-color:#5eead4}
+.nav11 button{color:#b6cecf}.nav11 button[aria-selected=true]{background:#20433f;color:#8af5e1;border-color:#38756c}
+.page11 .number,a{color:#78e8d5}.page11 .workspace th{background:#244149}td,th{border-color:#36515a}
+.page11 .workspace .diagram{background:#fff}.top12{border-color:#5eead4}
+body.light12{--surface:#fff;--line:#c8dcd9;background:#edf5f3;color:#183b3a}
+.light12 .shell11{background:#edf5f3}.light12 .brand11 strong{color:#08675e}
+.light12 label,.light12 p,.light12 small,.light12 .auth11{color:#355b58}
+.light12 input,.light12 select{background:#fff;color:#183b3a;border-color:#91b6b0}
+.light12 .nav11 button{color:#355b58}.light12 .nav11 button[aria-selected=true]{background:#d3eee7;color:#075b52;border-color:#9acdc1}
+.light12 .workspace th{background:#dceee9!important;color:#183b3a}
+.light12 .number,.light12 a{color:#08675e!important}.light12 td{color:#183b3a}
+</style>'''

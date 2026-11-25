@@ -28,7 +28,7 @@ jobs:
 
       - name: Build unsigned release
         working-directory: android
-        run: gradle --no-daemon assembleRelease
+        run: gradle --no-daemon assembleRelease bundleRelease
 
       - name: Sign APK
         env:
@@ -42,10 +42,14 @@ jobs:
           "$TOOLS/zipalign" -f 4 android/app/build/outputs/apk/release/app-release-unsigned.apk "$RUNNER_TEMP/aligned.apk"
           "$TOOLS/apksigner" sign --ks "$RUNNER_TEMP/autora.p12" --ks-key-alias autora --ks-pass env:KEY_PASSWORD --key-pass env:KEY_PASSWORD --out output/AUTORA.apk "$RUNNER_TEMP/aligned.apk"
           "$TOOLS/apksigner" verify --verbose output/AUTORA.apk
+          jarsigner -keystore "$RUNNER_TEMP/autora.p12" -storepass:env KEY_PASSWORD -keypass:env KEY_PASSWORD -signedjar output/AUTORA.aab android/app/build/outputs/bundle/release/app-release.aab autora
+          jarsigner -verify output/AUTORA.aab
           rm -f "$RUNNER_TEMP/autora.p12"
 
       - uses: actions/upload-artifact@v4
         with:
           name: AUTORA-Android
-          path: output/AUTORA.apk
+          path: |
+            output/AUTORA.apk
+            output/AUTORA.aab
           if-no-files-found: error
